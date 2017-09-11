@@ -1,0 +1,16 @@
+* {
+	background-color: #E8E8E8;
+}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+
+table, th, td {
+	border: 2px solid black;
+}
+
+th {
+	text-align: left;
+}
