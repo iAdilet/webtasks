@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Task 1</title>
+		<style>
+			div {
+				width: 264px;
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			input {
+				width: 80px;
+				height: 20px;
+				margin: 1px;
+				font-size: 16px;
+			}
+
+			button {
+				margin-top: 20px;
+				color: #00AA00;
+			}
+
+			p {
+				color: #FF0000;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input>
+			<input>
+			<input>
+			<input>
+			<input>
+			<input>
+			<input>
+			<input>
+			<input>
+		</div>
+		<button>Find determinant</button>
+		<p></p>
+		
+		<script>
+			function find() {
+				let inputs = document.querySelectorAll("input");
+				let matrix = [];
+				let row = 0;
+				let column = 0;
+
+				for (let i = 0; i < inputs.length; i++) {
+					if (column == 0) {
+						matrix[row] = [];
+					}
+					let input = inputs[i];
+					matrix[row][column] = parseFloat(input.value);
+					column++;
+					if (column == Math.sqrt(inputs.length)) {
+						column = 0;
+						row++;
+					}
+				}
+
+				let d = matrix[0][0] * matrix[1][1] * matrix[2][2] + matrix[0][1] * matrix[1][2] * matrix[2][0] + matrix[0][2] * matrix[1][0] * matrix[2][1] - matrix[0][2] * matrix[1][1] * matrix[2][0] - matrix[0][0] * matrix[1][2] * matrix[2][1] - matrix[0][1] * matrix[1][0] * matrix[2][2];
+
+				let p = document.querySelector("p");
+				p.innerHTML = d;
+			}
+
+			let inputs = document.querySelectorAll("input");
+			for (let i = 0; i < inputs.length; i++) {
+				let input = inputs[i];
+				input.value = parseInt(Math.random() * 10);
+			}
+
+			let button = document.querySelector("button");
+			button.addEventListener("click", find);
+
+			find();
+		</script>
+	</body>
+</html>
